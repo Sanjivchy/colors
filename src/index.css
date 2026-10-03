@@ -128,4 +128,46 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--mint); outl
 .stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); place-items: center; }
 .stage > .slide { grid-area: 1 / 1; }
 
+/* Act structure: agenda, footer ticks */
+.agenda-layout { display: grid; gap: 18px; }
+.agenda-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.agenda-card { min-width: 0; min-height: 250px; display: flex; flex-direction: column; align-items: start; gap: 6px; padding: 16px 14px; text-align: left; color: var(--text); border: 1px solid #313c34; border-radius: 5px; background: #1b211d; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+.agenda-card:hover { border-color: #536b59; background: #202922; transform: translateY(-3px); }
+.agenda-card > small { color: var(--mint); font: 8px var(--mono); letter-spacing: .8px; }
+.agenda-card strong { margin-top: 8px; color: #33443a; font: 800 36px/1 'Manrope', sans-serif; }
+.agenda-card h3 { font: 700 17px/1.2 'Manrope', sans-serif; }
+.agenda-card p { color: #98a49a; font-size: 11px; line-height: 1.5; }
+.agenda-card ul { width: 100%; display: grid; gap: 5px; margin-top: auto; padding-top: 10px; border-top: 1px solid #303a33; color: #7b877e; font-size: 9px; }
+.agenda-note { display: flex; align-items: center; gap: 13px; }
+.agenda-note p { color: #849188; font-size: 11px; }
+.progress-tick { position: absolute; z-index: 1; top: -3px; width: 1px; height: 8px; background: #5b675e; }
+
+/* Roles, tokens, components, dark mode additions */
+.roles-selector button > span code { color: #7f8c83; font: 8px var(--mono); }
+.contrast-stats { gap: 16px; }
+.component-rules { display: grid; gap: 8px; }
+.component-rules > .kicker { margin-bottom: 4px; }
+.component-rules > div:not(.kicker) { display: grid; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr); align-items: center; gap: 8px; padding: 9px 10px; border: 1px solid #303a33; border-radius: 4px; background: #1b211d; font: 9px var(--mono); }
+.component-rules s { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #c07e73; }
+.component-rules svg { color: #68766c; }
+.component-rules b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--mint); font-weight: 400; }
+.component-rules > p { margin-top: 6px; color: #849187; font-size: 10px; line-height: 1.6; }
+.mode-tokens { display: grid; gap: 5px; margin: 16px 0 12px; }
+.mode-tokens > div { display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 8px; padding: 6px 8px; color: #c0cbc2; border: 1px solid #303a33; border-radius: 3px; font: 9px var(--mono); }
+.mode-tokens i { width: 12px; height: 12px; border: 1px solid #ffffff24; border-radius: 3px; transition: background .3s; }
+.mode-tokens code:last-child { color: var(--mint); }
+.darkmode-copy > small { display: block; max-width: 250px; margin-bottom: 16px; color: #7b877e; font-size: 9px; line-height: 1.55; }
+
+.mock-dark .chart-head button { color: #b5c2b8; background: #2c3630; border-color: #3a473d; }.mock-dark .activity-row { border-color: #34403a; }.mock-dark .activity-row > span { color: #cfe0d3; background: #34403a; }
+
+/* Recap tags */
+.repair-act { display: inline-block; margin-top: 12px; padding: 4px 7px; color: var(--mint); border: 1px solid #3c5b45; border-radius: 3px; font: 8px var(--mono); letter-spacing: .8px; text-transform: uppercase; }
+.checklist-items button { grid-template-columns: 18px 1fr auto; }
+.checklist-items button > small { text-transform: uppercase; letter-spacing: .6px; }
+
+@media (max-width: 760px) {
+  .agenda-grid { grid-template-columns: 1fr 1fr; gap: 7px; }.agenda-card { min-height: 0; padding: 10px; }.agenda-card strong { font-size: 24px; }.agenda-card ul { display: none; }
+  .mode-tokens { margin: 10px 0; }.component-rules > div:not(.kicker) { font-size: 7px; padding: 6px; }
+}
+
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
